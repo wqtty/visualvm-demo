@@ -26,6 +26,7 @@ public class VisualvmDemoApplication implements CommandLineRunner {
             demoFuncs.httpRequest();
             demoFuncs.consumeSomeCPU();
             demoFuncs.combination();
+            demoFuncs.createMemoryLeak();
         }
     }
 }

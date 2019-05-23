@@ -5,6 +5,8 @@ import org.springframework.stereotype.Component;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Random;
 
 /**
  * @author quentinwu
@@ -13,6 +15,9 @@ import java.net.URL;
 @Slf4j
 @Component
 public class DemoFuncs {
+
+    private HashMap<Integer, Integer> holder = new HashMap<Integer, Integer>();
+
     void httpRequest() {
         String URL = "http://www.baidu.com";
         HttpURLConnection con = null;
@@ -43,5 +48,11 @@ public class DemoFuncs {
         consumeSomeCPU();
     }
 
-
+    void createMemoryLeak() {
+        Random random = new Random();
+        random.setSeed(System.currentTimeMillis());
+        for (int i = 0; i < 10000; i++) {
+            holder.put(random.nextInt(), random.nextInt());
+        }
+    }
 }
